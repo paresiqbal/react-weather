@@ -39,7 +39,7 @@ export default function Navbar() {
             width={20}
             className="hover:text-weather-secondary duration-150 cursor-pointer"
           />
-          <BaseModal />
+          <BaseModal header="My Card"></BaseModal>
         </div>
       </div>
     </nav>
