@@ -37,16 +37,25 @@ export default function Dashboard() {
       <div className="pt-4 mb-8 relative">
         <input
           type="text"
-          placeholder="Search For A City"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="py-2 px-1 w-full bg-weather-tertiary border-b focus:border-purple-500 focus:outline-none focus:shadow-md"
+          placeholder="Search for a city or state"
+          className="py-2 px-1 w-full bg-weather-secondary border-b focus:border-weather-secondary focus:outline-none focus:shadow-[0px_1px_0_0_#004E71]"
         />
+        {mapboxSearchResults && (
+          <ul className="absolute bg-weather-secondary text-white w-full shadow-md py-2 px-1 top-[66px]">
+            {mapboxSearchResults.map((searchResult) => (
+              <li
+                key={searchResult.id}
+                className="py-2 cursor-pointer"
+                onClick={() => previewCity(searchResult)}
+              >
+                {searchResult.place_name}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      {mapboxSearchResults &&
-        mapboxSearchResults.map((result, index) => (
-          <div key={index}>{result.place_name}</div>
-        ))}
     </main>
   );
 }
