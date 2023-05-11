@@ -1,5 +1,6 @@
 // react
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 // library
 import {
@@ -12,6 +13,12 @@ import {
 import BaseModal from "./BaseModal";
 
 export default function Navbar() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function toggleModal() {
+    setIsModalOpen(!isModalOpen);
+  }
+
   return (
     <nav className="top-0 sticky shadow-lg bg-weather-primary">
       <div className="container flex flex-col sm:flex-row items-center gap-4 text-white py-6 ">
@@ -27,14 +34,15 @@ export default function Navbar() {
           <InformationCircleIcon
             width={20}
             className="hover:text-weather-secondary duration-150 cursor-pointer"
+            onClick={toggleModal}
           />
           <PlusIcon
             width={20}
             className="hover:text-weather-secondary duration-150 cursor-pointer"
           />
-          <BaseModal />
         </div>
       </div>
+      {isModalOpen && <BaseModal toggleModal={toggleModal} />}
     </nav>
   );
 }
