@@ -26,5 +26,9 @@ export default function AsyncCityView() {
     }
 
     const weatherData = await getWeatherData();
+
+    console.log(weatherData);
   };
+
+  return <div>AsyncCityView</div>;
 }
