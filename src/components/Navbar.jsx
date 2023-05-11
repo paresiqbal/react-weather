@@ -20,7 +20,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="top-0 sticky shadow-lg bg-weather-primary">
+    <nav className="top-0 sticky shadow-lg bg-weather-primary z-50">
       <div className="container flex flex-col sm:flex-row items-center gap-4 text-white py-4 md:py-6">
         <NavLink
           to={"/"}
