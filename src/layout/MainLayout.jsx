@@ -5,7 +5,7 @@ export default function MainLayout() {
   return (
     <div>
       <Navbar />
-      <main>
+      <main className="bg-weather-primary h-screen text-white">
         <Outlet />
       </main>
     </div>

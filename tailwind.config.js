@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        "weather-primary": "#252429",
-        "weather-secondary": "#231f2d",
-        "weather-tertiary": "#211a32"
+        "weather-primary": "#141414",
+        "weather-secondary": "#282828",
+        "weather-tertiary": "#3c3c3c"
       },
     },
     fontFamily: {
