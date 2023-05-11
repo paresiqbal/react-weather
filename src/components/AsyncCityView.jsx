@@ -5,7 +5,7 @@ export default function AsyncCityView() {
   const getWeatherData = async () => {
     try {
       const weatherData = await axios.get(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${route.query.lat}&lon=${route.query.lng}&exclude={part}&appid=b1fe8bb6a22e846d16d17e5c31fe22c5&units=imperial`
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude={part}&appid=b1fe8bb6a22e846d16d17e5c31fe22c5&units=imperial`
       );
 
       // cal current date & time

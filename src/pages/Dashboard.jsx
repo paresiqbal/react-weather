@@ -1,5 +1,6 @@
 // react
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // library
 import axios from "axios";
@@ -9,6 +10,8 @@ export default function Dashboard() {
   const [queryTimeout, setQueryTimeout] = useState(null);
   const [error, setError] = useState(null);
 
+  const navigate = useNavigate();
+
   const [mapboxSearchResults, setMapboxSearchResults] = useState(null);
   const mapboxAPIKey =
     "pk.eyJ1Ijoiam9obmtvbWFybmlja2kiLCJhIjoiY2t5NjFzODZvMHJkaDJ1bWx6OGVieGxreSJ9.IpojdT3U3NENknF6_WhR2Q";
@@ -16,6 +19,10 @@ export default function Dashboard() {
   const previewCity = (searchResult) => {
     console.log(searchResult);
     const [city, state] = searchResult.place_name.split(",");
+    navigate.push({
+      pathname: `/city/${state.replaceAll(" ", "")}/${city}`,
+      search: `?lat=${searchResult.geometry.coordinates[1]}&lng=${searchResult.geometry.coordinates[0]}&preview=true`,
+    });
   };
 
   const getSearchResults = () => {
