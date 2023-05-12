@@ -1,7 +1,12 @@
 // library
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 export default function AsyncCityView() {
+  const location = useLocation();
+
+  const { lat, lng } = location.state;
+
   const getWeatherData = async () => {
     try {
       const weatherData = await axios.get(
