@@ -5,7 +5,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import Error from "./pages/Error";
-import CityView from "./pages/CityView";
 
 const router = createBrowserRouter([
   {
@@ -16,11 +15,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Dashboard />,
-        errorElement: <Error />,
-      },
-      {
-        path: "/weather/:state/:city",
-        element: <CityView />,
         errorElement: <Error />,
       },
     ],
