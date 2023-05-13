@@ -34,7 +34,7 @@ export default function Dashboard() {
   };
 
   return (
-    <main className="container text-white text-center">
+    <main className="container text-white ">
       <div className="pt-4 mb-8 relative">
         <input
           type="text"
@@ -42,13 +42,17 @@ export default function Dashboard() {
           className="py-2 px-1 w-full bg-weather-secondary border-b rounded-sm focus:border-weather-secondary focus:outline-none focus:shadow-[0px_1px_0_0_#004E71]"
         />
       </div>
-      <div className="flex flex-col gap-4 py-4">
-        <h1 className="text-4xl font-bold">New York City, US</h1>
-        <h2 className="text-2xl">{dateBuilder(new Date())}</h2>
-      </div>
-      <div className="flex flex-col gap-4 pt-8">
-        <div className="text-7xl font-bold p-4 bg-weather-secondary">15°C</div>
-        <h1 className="text-5xl font-bold">Sunny</h1>
+      <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col gap-4 py-4">
+          <h1 className="text-4xl font-bold">New York City, US</h1>
+          <h2 className="text-2xl">{dateBuilder(new Date())}</h2>
+        </div>
+        <div className="flex flex-col gap-4 pt-8">
+          <div className="text-8xl font-bold p-5 rounded-md bg-weather-secondary">
+            15°C
+          </div>
+        </div>
+        <h1 className="text-5xl font-bold pt-4">Sunny</h1>
       </div>
     </main>
   );
