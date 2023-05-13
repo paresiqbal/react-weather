@@ -1,4 +1,5 @@
 export default function Dashboard() {
+  // Dates function
   const dateBuilder = (d) => {
     let months = [
       "January",
@@ -44,6 +45,10 @@ export default function Dashboard() {
       <div>
         <div>New York City, US</div>
         <div>{dateBuilder(new Date())}</div>
+      </div>
+      <div>
+        <div>15°C</div>
+        <div>Sunny</div>
       </div>
     </main>
   );
