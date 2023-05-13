@@ -1,4 +1,10 @@
+// react
+import { useState } from "react";
+
 export default function Dashboard() {
+  const [query, setQuery] = useState("");
+  const [weather, setWeather] = useState({});
+
   // Dates function
   const dateBuilder = (d) => {
     let months = [
