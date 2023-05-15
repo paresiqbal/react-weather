@@ -5,6 +5,17 @@ export default function Dashboard() {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
 
+  const API_KEY =
+    "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={b1fe8bb6a22e846d16d17e5c31fe22c5}";
+
+  const search = (evt) => {
+    if (evt.key === "Enter") {
+      fetch(`API_KEY`)
+        .then((res) => res.json())
+        .then((result) => setWeather(result));
+    }
+  };
+
   // Dates function
   const dateBuilder = (d) => {
     let months = [
