@@ -80,22 +80,15 @@ export default function Dashboard() {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
+
       <div className="flex flex-col items-center justify-center">
-        <div className="flex flex-col gap-4 py-4">
-          <h1 className="text-4xl font-bold">New York City, US</h1>
-          <h2 className="text-2xl">{dateBuilder(new Date())}</h2>
-        </div>
-        <div className="flex flex-col gap-4 pt-8">
-          <div className="text-8xl font-bold p-5 rounded-md bg-weather-secondary">
-            15°C
-          </div>
-        </div>
-        <h1 className="text-5xl font-bold pt-4">Sunny</h1>
         {weatherSearchResults && (
-          <div>
-            <h2>{weatherSearchResults.name}</h2>
-            <p>{weatherSearchResults.weather[0].description}</p>
-            <p>Temperature: {weatherSearchResults.main.temp} K</p>
+          <div className="flex flex-col gap-4 py-4">
+            <h2 className="text-4xl font-bold">{weatherSearchResults.name}</h2>
+            <p className="text-5xl font-bold pt-4">
+              {weatherSearchResults.weather[0].description}
+            </p>
+            <p>Temperature: {weatherSearchResults.main.temp - 273} K</p>
             <p>Humidity: {weatherSearchResults.main.humidity} %</p>
           </div>
         )}
