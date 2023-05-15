@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Dashboard() {
-  const API_KEY =
-    "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={b1fe8bb6a22e846d16d17e5c31fe22c5}";
+  const API_KEY = "b1fe8bb6a22e846d16d17e5c31fe22c5";
 
   const [searchQuery, setSearchQuery] = useState("");
   const [weatherSearchResults, setWeatherSearchResults] = useState(null);
@@ -18,7 +17,7 @@ export default function Dashboard() {
         if (searchQuery !== "") {
           try {
             const result = await axios.get(
-              `https://api.openweathermap.org/data/2.5/weather?q=${searchQuery}&appid=${b1fe8bb6a22e846d16d17e5c31fe22c5}`
+              `https://api.openweathermap.org/data/2.5/weather?q=${searchQuery}&appid=${API_KEY}`
             );
             setWeatherSearchResults(result.data);
             setSearchError(false);
