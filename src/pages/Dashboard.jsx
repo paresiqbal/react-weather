@@ -1,20 +1,40 @@
 // react
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Dashboard() {
-  const [query, setQuery] = useState("");
-  const [weather, setWeather] = useState({});
-
   const API_KEY =
     "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={b1fe8bb6a22e846d16d17e5c31fe22c5}";
 
-  const search = (evt) => {
-    if (evt.key === "Enter") {
-      fetch(`API_KEY`)
-        .then((res) => res.json())
-        .then((result) => setWeather(result));
-    }
+  const [searchQuery, setSearchQuery] = useState("");
+  const [weatherSearchResults, setWeatherSearchResults] = useState(null);
+  const [searchError, setSearchError] = useState(false);
+  const [queryTimeout, setQueryTimeout] = useState(null);
+
+  const getSearchResults = () => {
+    clearTimeout(queryTimeout);
+    setQueryTimeout(
+      setTimeout(async () => {
+        if (searchQuery !== "") {
+          try {
+            const result = await axios.get(
+              `https://api.openweathermap.org/data/2.5/weather?q=${searchQuery}&appid=${b1fe8bb6a22e846d16d17e5c31fe22c5}`
+            );
+            setWeatherSearchResults(result.data);
+            setSearchError(false);
+          } catch {
+            setSearchError(true);
+          }
+        } else {
+          setWeatherSearchResults(null);
+        }
+      }, 300)
+    );
   };
+
+  useEffect(() => {
+    getSearchResults();
+  }, [searchQuery]);
 
   // Dates function
   const dateBuilder = (d) => {
@@ -57,6 +77,8 @@ export default function Dashboard() {
           type="text"
           placeholder="Search for a city"
           className="py-2 px-1 w-full bg-weather-secondary border-b rounded-sm focus:border-weather-secondary focus:outline-none focus:shadow-[0px_1px_0_0_#004E71]"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
       <div className="flex flex-col items-center justify-center">
@@ -70,6 +92,14 @@ export default function Dashboard() {
           </div>
         </div>
         <h1 className="text-5xl font-bold pt-4">Sunny</h1>
+        {weatherSearchResults && (
+          <div>
+            <h2>{weatherSearchResults.name}</h2>
+            <p>{weatherSearchResults.weather[0].description}</p>
+            <p>Temperature: {weatherSearchResults.main.temp} K</p>
+            <p>Humidity: {weatherSearchResults.main.humidity} %</p>
+          </div>
+        )}
       </div>
     </main>
   );
