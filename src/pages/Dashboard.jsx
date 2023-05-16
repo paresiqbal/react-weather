@@ -93,7 +93,7 @@ export default function Dashboard() {
             </div>
             <div>
               <p>{Math.round(weatherSearchResults.main.temp)}°C</p>
-              <p>Humidity: {weatherSearchResults.main.humidity} %</p>
+              <p>{weatherSearchResults.weather[0].main}</p>
             </div>
           </div>
         )}
