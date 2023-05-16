@@ -10,6 +10,7 @@ export default function Dashboard() {
   const [searchError, setSearchError] = useState(false);
   const [queryTimeout, setQueryTimeout] = useState(null);
 
+  // fetch API
   const getSearchResults = () => {
     clearTimeout(queryTimeout);
     setQueryTimeout(
@@ -81,15 +82,19 @@ export default function Dashboard() {
         />
       </div>
 
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center text-center">
         {weatherSearchResults && (
-          <div className="flex flex-col gap-4 py-4">
-            <h2 className="text-4xl font-bold">{weatherSearchResults.name}</h2>
-            <p className="text-5xl font-bold pt-4">
-              {weatherSearchResults.weather[0].description}
-            </p>
-            <p>Temperature: {weatherSearchResults.main.temp - 273} K</p>
-            <p>Humidity: {weatherSearchResults.main.humidity} %</p>
+          <div className="flex flex-col gap-4 py-4 ">
+            <div>
+              <h1 className="text-4xl font-bold">
+                {weatherSearchResults.name}, {weatherSearchResults.sys.country}
+              </h1>
+              <h2>{dateBuilder(new Date())}</h2>
+            </div>
+            <div>
+              <p>{Math.round(weatherSearchResults.main.temp)}°C</p>
+              <p>Humidity: {weatherSearchResults.main.humidity} %</p>
+            </div>
           </div>
         )}
       </div>
