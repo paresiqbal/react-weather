@@ -85,15 +85,19 @@ export default function Dashboard() {
       <div className="flex flex-col items-center justify-center text-center">
         {weatherSearchResults && (
           <div className="flex flex-col gap-4 py-4 ">
-            <div>
-              <h1 className="text-4xl font-bold">
+            <div className="flex flex-col gap-2">
+              <h1 className="text-5xl font-bold">
                 {weatherSearchResults.name}, {weatherSearchResults.sys.country}
               </h1>
-              <h2>{dateBuilder(new Date())}</h2>
+              <h2 className="text-xl italic">{dateBuilder(new Date())}</h2>
             </div>
-            <div>
-              <p>{Math.round(weatherSearchResults.main.temp)}°C</p>
-              <p>{weatherSearchResults.weather[0].main}</p>
+            <div className="flex flex-col gap-4">
+              <p className="bg-weather-secondary py-10 w-full text-6xl font-bold rounded-lg">
+                {Math.round(weatherSearchResults.main.temp)}°C
+              </p>
+              <p className="text-2xl font-semibold">
+                {weatherSearchResults.weather[0].main}
+              </p>
             </div>
           </div>
         )}
